@@ -1,0 +1,73 @@
+[
+  {
+    "FullName": "Andreas Kleppe",
+    "jobTitle": "Post Doc.",
+    "telephone": "22782364",
+    "email": "andreas.kleppe@gmail.com",
+    "gender": "male"
+
+  },
+  {
+    "FullName": "Anne Mette Eng",
+    "jobTitle": "Laboratory Coordinator",
+    "telephone": "22782364",
+    "email": "Anne.Mette@icgi.no",
+    "gender": "female"
+  },
+  {
+    "FullName": "Bjørn Morten Sannes",
+    "jobTitle": "Technical Engineer",
+    "telephone": "22782333",
+    "email": "bmsannes@gmail.com",
+    "gender": "male"
+  },
+  {
+    "FullName": "Hans Martin Mohn",
+    "jobTitle": "System Developer",
+    "telephone": "91322313",
+    "email": "hamohn@ous-hf.no",
+    "gender": "male"
+  },
+  {
+    "FullName": "Hege Moland",
+    "jobTitle": "Medical writer, Oncolex/Kreftlex",
+    "telephone": "22782333",
+    "email": "hege.moland@icgi.no",
+    "gender": "female"
+  },
+  {
+    "FullName": "Kari Andresen",
+    "jobTitle": "Unit Leader, Journalist",
+    "telephone": "22782338",
+    "email": "kari.andresen@icgi.no",
+    "gender": "female"
+  },
+  {
+    "FullName": "Rajni Kumar",
+    "jobTitle": "System developer",
+    "telephone": "41287727",
+    "email": "rajni@medinfo.net",
+    "gender": "female"
+  },
+  {
+    "FullName": "Marian Seiergren",
+    "jobTitle": "Designer",
+    "telephone": "22782338",
+    "email": "marian@medinfo.net",
+    "gender": "female"
+  },
+  {
+    "FullName": "Ketil Jordan",
+    "jobTitle": "Video Producer",
+    "telephone": "22782338",
+    "email": "ketil@icgi.no",
+    "gender": "male"
+  },
+  {
+    "FullName": "Lars Røine",
+    "jobTitle": "System Developer",
+    "telephone": "22782338",
+    "email": "lars.roine@ous-hf.no",
+    "gender": "male"
+  }
+]

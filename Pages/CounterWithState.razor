@@ -1,0 +1,16 @@
+﻿@page "/counterwithstate"
+<h1>Counter that maintains its state across the pages</h1>
+
+<p>Current count: @CountState.CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
+
+@code {
+    [CascadingParameter] CounterStateProvider CountState { get; set; }
+
+
+    void IncrementCount()
+    {
+        CountState.CurrentCount++;
+    }
+}

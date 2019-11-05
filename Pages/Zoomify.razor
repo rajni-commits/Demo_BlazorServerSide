@@ -1,0 +1,19 @@
+﻿@page "/zoomify"
+@using Microsoft.JSInterop
+@using System.Threading.Tasks
+@inject IJSRuntime JSRuntime
+<h2>Zoomify</h2>
+<h3>You can still use your favorite javascript libraries</h3>
+<div classe="container">
+    <div id="seadragon-viewer" class="p-4" style="width:800px; height:600px;"></div>
+</div>
+@code {
+    //While a Blazor Server app is prerendering, certain actions, such as calling into JavaScript, aren't possible 
+    //because a connection with the browser hasn't been established.
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+
+    {
+        var text = await JSRuntime.InvokeAsync<string>("loadDragon");
+
+    }
+}

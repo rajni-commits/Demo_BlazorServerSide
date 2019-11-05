@@ -1,0 +1,49 @@
+﻿@page "/invoke-dotnet-method-with-javascript"
+@using Microsoft.JSInterop
+@using System.Threading.Tasks
+@inject IJSRuntime JSRuntime
+
+<h1>JavaScript Interop Demo</h1>
+<div classe="container">
+    It is possible to use any JS library. C# code can call a JS function/API and JS code can call any C# methods. This property of calling a JS method from C# code and vice versa is referred to as JavaScript Interop. Blazor uses JavaScript Interop to handle DOM manipulation and browser API calls.
+    <hr />
+
+    <button class="btn btn-primary" @onclick="@CallJSMethod">Call JS Method</button>
+    <button class="btn btn-primary" @onclick="@CallCSMethod">Call C# Method</button>
+    <p></p>
+    <div class="alert-info" id="demop"></div>
+    <p></p>
+    <div class="alert-info">
+        @message
+    </div>
+</div>
+
+
+
+@code {
+    public static string message { get; set; }
+    protected MarkupString ConvertedText =
+        new MarkupString("Click on <b>Call </b> button.");
+
+    protected async Task CallJSMethod()
+    {
+        await JSRuntime.InvokeAsync<string>("JSMethod");
+
+    }
+
+    protected async Task CallCSMethod()
+    {
+        await JSRuntime.InvokeAsync<string>("CSMethod");
+
+    }
+
+    //To invoke a C# or .NET method from JavaScript, the target .NET method must meet the following criteria:
+    // 1. It must be declared as public static
+    // 2. It should have no overloads
+    // 3. It should be decorated with the [JSInvokable] attribute
+    [JSInvokable]
+    public static void CSCallBackMethod()
+    {
+        message = "C# function called from JavaScript";
+    }
+}

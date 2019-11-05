@@ -1,0 +1,74 @@
+﻿@page "/"
+@namespace test.Pages
+@using Blazor.Extensions.Canvas
+@addTagHelper *, Blazor.Extensions.Canvas
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <script src="_content/Blazor.Extensions.Canvas/blazor.extensions.canvas.js"></script>
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+    //The blazor.server.js script establishes the client connection
+    <script src="_framework/blazor.server.js"></script>
+
+    <script src="//openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
+    <script type='text/javascript'>
+
+        //function loadMapScenario() {
+        //    debugger;
+        //    var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+        //    var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+        //    map.entities.push(pushpin);
+        //    return "";
+        //}
+        function loadDragon() {
+            var duomo = {
+                Image: {
+                    xmlns: "http://schemas.microsoft.com/deepzoom/2008",
+                    Url: "https://localhost:44323/images/p58-792-17895_files/",
+                    Format: "jpg",
+                    Overlap: "2",
+                    TileSize: "256",
+                    Size: {
+                        Width: "13920",
+                        Height: "10200"
+                    }
+                }
+            };
+
+            var viewer = OpenSeadragon({
+                id: "seadragon-viewer",
+                prefixUrl: "//openseadragon.github.io/openseadragon/images/",
+                tileSources: duomo
+            });
+        }
+
+    </script>
+    <script>
+        function JSMethod() {
+
+            document.getElementById("demop").innerHTML = "JavaScript function called from C#";
+        }
+    </script>
+    <script>
+        function CSMethod() {
+            //To call C3 method from JS, You must pass that method the name of the assembly holding your C# code and the name of the "JavaScript-invokable" static method that you want to call.
+            //In our case it is CSCallBackMethod in our razor page
+            DotNet.invokeMethodAsync('test', 'CSCallBackMethod');
+        }
+    </script>
+
+    @*<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=###&callback=loadMapScenario' async defer></script>*@
+</body>
+</html>

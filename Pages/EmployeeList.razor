@@ -1,0 +1,63 @@
+﻿@page "/employeelist"
+@using test.Data
+@inject IcgiEmployeeService icgiemployeeservice
+
+<head>
+    <link runat="runat" href="~/css/site.css" rel="stylesheet" />
+</head>
+<h1>ICGI Employees</h1>
+
+<p>This component demonstrates fetching data from a json file.</p>
+@if (Employees == null)
+{
+
+    <MatBlazor.MatProgressBar Indeterminate="true"></MatBlazor.MatProgressBar>
+
+
+}
+else
+{
+    <div class="table-responsive-lg">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Email</th>
+                    <th>Tlf</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Employees)
+                {
+                    <tr>
+
+                        <td>@employee.FullName</td>
+                        <td>@employee.jobTitle</td>
+                        <td>@employee.email</td>
+                        <td>
+                            <input type="number" @bind="@employee.telephone" />
+                        </td>
+                        <td>
+                            <input type="text" @bind="@employee.gender" />
+                        </td>
+                        @if (employee.gender == "male")
+                        {
+                            <td class="lightblue">@employee.gender</td>
+                        }
+
+                        else
+                        {
+                            <td class="pink">@employee.gender</td>
+                        }
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+
+

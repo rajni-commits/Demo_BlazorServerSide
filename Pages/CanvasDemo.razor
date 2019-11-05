@@ -1,0 +1,22 @@
+﻿@page "/canvas-demo"
+@using Blazor.Extensions
+<h3>Canvas demo by using nuget package Blazor.Extensions.Canvas</h3>
+<BECanvas Width="300" Height="400" @ref="_canvasReference"></BECanvas>
+<p></p>
+<BECanvas Width="300" Height="400" @ref="_canvasReferenceImage"></BECanvas>
+@code {
+    private Blazor.Extensions.Canvas.Canvas2D.Canvas2DContext _context;
+    //private  Blazor.Extensions.Canvas.WebGL.WebGLContext _webglcontext;
+    protected BECanvasComponent _canvasReference;
+    protected BECanvasComponent _canvasReferenceImage;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        this._context = await this._canvasReference.CreateCanvas2DAsync();
+        await this._context.SetFillStyleAsync("green");
+   
+        await this._context.FillRectAsync(10, 100, 100, 100);
+
+        await this._context.SetFontAsync("48px serif");
+        await this._context.StrokeTextAsync("Hello Blazor!!!", 10, 100);
+    }
+}

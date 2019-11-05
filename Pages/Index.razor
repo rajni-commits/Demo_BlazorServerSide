@@ -1,0 +1,65 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+
+<AuthorizeView>
+    <Authorized>
+        <h1>Hello, @context.User.Identity.Name!</h1>
+        You can only see this if you're authenticated.
+        <button @onclick="@LogUsername">Employee list</button>
+    </Authorized>
+    <NotAuthorized>
+        <p class="alert-danger">You're not logged in.</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+
+
+
+<h2>Blazor = Browser + Razor</h2>
+
+
+<p>
+    Blazor is based on the syntax of ASP.NET Core Razor Pages. Blazor allows to create components using C# code
+</p>
+<p>
+    There are two types of blazor models
+    <ul><li>Client side blazor</li><li>server side blazor</li></ul>
+</p>
+<p>With the Blazor Server hosting model, the app is executed on the server from within an ASP.NET Core app. </p>
+<p>UI updates, event handling, and JavaScript calls are handled over a SignalR connection. SignalR connection uses websockets</p>
+<p>The blazor.server.js script in Pages\_Host.cshtml establishes the client connection</p>
+
+
+
+@code {
+    [CascadingParameter] Task<AuthenticationState> authenticationStateTask { get; set; }
+    private  Blazor.Extensions.Canvas.Canvas2D.Canvas2DContext _context;
+    //private  Blazor.Extensions.Canvas.WebGL.WebGLContext _webglcontext;
+    //protected BeCanvas _canvasReference;
+
+
+    async Task LogUsername()
+    {
+        //redirect to ikiemployees page with the help of navigation manager
+
+        NavigationManager.NavigateTo("/ikiemployees");
+
+    }
+
+
+
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+
+    //    this._context = await this._canvasReference.CreateCanvas2DAsync();
+    //    await this._context.SetFillStyleAsync("green");
+
+    //    await this._context.FillRectAsync(10, 100, 100, 100);
+
+    //    await this._context.SetFontAsync("48px serif");
+    //    await this._context.StrokeTextAsync("Hello Blazor!!!", 10, 100);
+    //}
+}
+

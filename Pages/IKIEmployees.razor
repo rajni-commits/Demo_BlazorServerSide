@@ -1,0 +1,53 @@
+﻿@page "/ikiemployees"
+@using test.Data
+@inject EmployeeService employeeservice
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+
+<h1>ICGI Employees</h1>
+
+<p>This component demonstrates fetching data from a json file.</p>
+
+
+
+
+@if (employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>FullName</th>
+                <th>Job title (C)</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in employees)
+            {
+                <tr>
+                    <td>@employee.FullName</td>
+                    <td>@employee.jobTitle</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code
+{
+
+    Employees[] employees;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employees = await employeeservice.GetEmployeesAsync();
+         
+    }
+}
+
+}
